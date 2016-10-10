@@ -11,13 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import co.grandcircus.movies.rest.SunService;
 import co.grandcircus.movies.rest.WeatherService;
+
 @Controller
 public class SunController {
-private static final Logger logger = LoggerFactory.getLogger(SunController.class);
-	
+	private static final Logger logger = LoggerFactory.getLogger(SunController.class);
+
 	@Autowired
 	private SunService sunriseService;
-	
+
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -25,12 +26,10 @@ private static final Logger logger = LoggerFactory.getLogger(SunController.class
 	public String home(Locale locale, Model model) {
 		// add the 'sunrise' variable to the JSP
 		model.addAttribute("sun1", sunriseService.getCurrentSunRiseAtGrandCircus());
-		
+
 		logger.info("/sun -> sun.jsp");
 		// select to use the sunRise.jsp view
 		return "sun";
 	}
-	
-
 
 }

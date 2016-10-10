@@ -11,21 +11,21 @@
 <%@ include file="parts/head.jsp"%>
 </head>
 <body>
-<div class="nav">
+	<div class="nav">
 		<a href="<c:url value="/"/>">Home</a>
 	</div>
-	<h1> Sun</h1>
+	<h1>Sun</h1>
 
 	<p>
 		<label>Current Sunrise: </label>
 		<c:out value="${ sun1.sunRise }" />
-		
+
 	</p>
 	<p>
-	 <label>Current Sunset: </label>
+		<label>Current Sunset: </label>
 		<c:out value="${ sun1.sunSet }" />
 	</p>
-	
+
 
 
 </body>

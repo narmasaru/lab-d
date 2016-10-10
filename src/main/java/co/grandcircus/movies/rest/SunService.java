@@ -12,6 +12,7 @@ import com.google.gson.JsonParser;
 
 import co.grandcircus.movies.model.Weather;
 import co.grandcircus.movies.model.sun;
+
 /**
  * Responsibility: Shows Sunrise & Sunset Time for a particular location
  */
@@ -24,10 +25,8 @@ public class SunService {
 		return getCurrentSunRiseAt(GRAND_CIRCUS_LAT, GRAND_CIRCUS_LON);
 	}
 
-	
-
 	public sun getCurrentSunRiseAt(String lat, String lon) {
-		String url = "http://api.sunrise-sunset.org/json?lat="+lat+ "&lng=" +lon;
+		String url = "http://api.sunrise-sunset.org/json?lat=" + lat + "&lng=" + lon;
 		// Use HTTP GET with the above URL
 		try (BufferedReader reader = HttpHelper.doGet(url)) { // try with
 																// resources
@@ -42,22 +41,19 @@ public class SunService {
 			JsonElement root = new JsonParser().parse(reader);
 			// pick the "results" key from the root JSON object.
 			JsonObject results = root.getAsJsonObject().get("results").getAsJsonObject();
-			
-			
+
 			sun sun = new sun();
 			// pick the "sunrise" key from the result object
 			sun.setSunRise(results.get("sunrise").getAsString());
 			// pick the "sunset" key from the results object
-			
+
 			sun.setSunSet(results.get("sunset").getAsString());
-            
+
 			return sun;
 
 		} catch (IOException ex) {
 			throw new RuntimeException("Error reading from URL: " + url, ex);
 		}
 	}
-
-
 
 }
