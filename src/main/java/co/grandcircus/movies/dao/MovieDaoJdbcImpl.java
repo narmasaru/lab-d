@@ -129,8 +129,7 @@ public class MovieDaoJdbcImpl implements MovieDao {
 	public void updateMovie(int id, Movie movie) throws NotFoundException {
 		String sql = "UPDATE SimpleMovie SET title = ?, category = ? WHERE id = ?";
 		try (Connection conn = connectionFactory.getConnection();
-				PreparedStatement statement = conn
-						.prepareStatement(sql)) {
+				PreparedStatement statement = conn.prepareStatement(sql)) {
 			statement.setString(1, movie.getTitle());
 			statement.setString(2, movie.getCategory());
 			statement.setInt(3, movie.getId());
